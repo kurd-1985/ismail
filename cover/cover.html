@@ -75,6 +75,11 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
   background:linear-gradient(var(--ochre),transparent);opacity:.55}
 .isbncol{display:flex;flex-direction:column;align-items:center}
 .price{font-family:"Vazirmatn";font-weight:700;font-size:12pt;color:var(--paper)}
+/* publisher logo: white badge, kept upright on the spine */
+.spine .plogo{writing-mode:horizontal-tb;transform:rotate(180deg);background:#fff;border-radius:1.5mm;padding:1mm;display:block}
+.spine .plogo img{width:16mm;height:16mm;object-fit:contain;display:block}
+.plogo-back{background:#fff;border-radius:1.5mm;padding:1.2mm}
+.plogo-back img{width:19mm;height:19mm;object-fit:contain;display:block}
 .backfoot{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-end}
 .isbn{width:40mm;height:26mm;background:#fff;color:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;
   font-family:"Vazirmatn";font-size:7.5pt;direction:ltr;border-radius:1mm}
@@ -113,6 +118,7 @@ body.mask .vtitle span, body.mask .spine .st, body.mask .spine .st b{color:#000!
         <img src="author.jpg" alt="ئیسماعیل هەورامی">
         <div class="an">ئیسماعیل هەورامی</div><div class="ar"></div>
       </div>
+      <div class="plogo-back"><img src="publisher-logo.png" alt="لۆگۆی چاپخانە"></div>
       <div class="isbncol"><div class="price">نرخ: 6000</div>
       </div>
     </div>
@@ -124,6 +130,7 @@ body.mask .vtitle span, body.mask .spine .st, body.mask .spine .st b{color:#000!
   <div class="v">
     <span class="st">لە ڕاپەڕینەوە <b>بۆ براکوژی</b></span>
         <span class="sa">ئیسماعیل هەورامی</span>
+    <span class="plogo"><img src="publisher-logo.png" alt="لۆگۆی چاپخانە"></span>
   </div>
 </section>
 
