@@ -30,7 +30,7 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 .grain{position:absolute;inset:0;opacity:.18;mix-blend-mode:screen;pointer-events:none}
 
 /* ---------- FRONT ---------- */
-.front .art{position:absolute;left:calc(var(--bleed) + 13mm);top:calc(var(--bleed) + 24mm);width:59mm;height:54mm}
+.front .art{position:absolute;left:calc(var(--bleed) + 13mm);top:calc(var(--bleed) + 14mm);width:59mm;height:100mm}
 /* SAFE ZONE (hardcover): 13 mm from top, bottom and outer board edges, 16 mm from the hinge side */
 .front .safe{position:absolute;top:calc(var(--bleed) + 13mm);left:calc(var(--bleed) + 13mm);right:16mm;bottom:calc(var(--bleed) + 13mm)}
 /* vertical title column on the spine side; reads top-to-bottom, first line on the left */
@@ -135,25 +135,90 @@ body.mask .vtitle span, body.mask .spine .st, body.mask .spine .st b{color:#000!
 
 <!-- FRONT -->
 <section class="panel front">
-  <!-- Art: the KDP and PUK zones of control (1996–1998), traced from the author's map and pulled apart along their front line. -->
-  <svg class="art" viewBox="160 20 500 450" preserveAspectRatio="xMidYMid meet">
+  <!-- Art: a terraced Kurdish mountain village (Hawraman-style) at dusk, lit windows; a red fissure runs
+       from the sky through the mountains and the village, and the two halves no longer line up. -->
+  <svg class="art" id="villageArt" viewBox="0 0 59 100" preserveAspectRatio="xMidYMid meet">
     <defs>
-      <radialGradient id="glow" gradientUnits="userSpaceOnUse" cx="410" cy="245" r="215">
-        <stop offset="0" stop-color="#c9a15b" stop-opacity=".16"/><stop offset="1" stop-color="#c9a15b" stop-opacity="0"/>
+      <radialGradient id="dusk" gradientUnits="userSpaceOnUse" cx="29.5" cy="62" r="46">
+        <stop offset="0" stop-color="#c9a15b" stop-opacity=".30"/>
+        <stop offset=".55" stop-color="#8a5a3a" stop-opacity=".10"/>
+        <stop offset="1" stop-color="#141214" stop-opacity="0"/>
       </radialGradient>
-      <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="3" dy="5" stdDeviation="5" flood-color="#000" flood-opacity=".65"/></filter>
-      <path id="kdpP" transform="translate(0 483) scale(.1 -.1)" d="M2278 4370 c-16 -16 -28 -33 -28 -38 0 -5 -11 -14 -24 -21 -13 -7 -29 -24 -35 -37 -6 -13 -17 -24 -26 -24 -8 0 -15 -9 -15 -20 0 -10 -7 -23 -16 -28 -16 -9 -35 -37 -56 -83 -12 -27 -55 -39 -145 -39 -17 0 -38 -7 -47 -15 -8 -8 -28 -15 -45 -15 -34 0 -36 -2 -21 -28 5 -9 18 -37 29 -62 22 -51 81 -113 88 -92 3 6 16 12 30 12 23 0 25 -3 21 -32 -3 -18 -2 -40 3 -48 4 -8 11 -31 14 -50 4 -26 16 -42 48 -65 56 -40 57 -40 57 -16 0 17 6 21 35 21 19 0 35 -4 35 -10 0 -5 6 -10 14 -10 8 0 17 -11 20 -25 4 -16 13 -25 26 -25 10 0 22 -9 25 -20 4 -13 15 -20 31 -20 13 0 24 -4 24 -10 0 -5 7 -10 15 -10 8 0 15 -3 15 -8 0 -4 17 -6 38 -4 21 2 45 -3 56 -11 27 -20 146 13 198 54 43 34 108 48 125 27 9 -11 40 -13 135 -12 87 2 129 -1 148 -11 14 -7 33 -16 42 -19 12 -3 19 -21 24 -55 4 -28 12 -52 20 -55 16 -6 19 -53 3 -58 -17 -6 1 -37 24 -40 24 -3 36 -53 21 -86 -18 -42 14 -127 51 -136 14 -4 26 -20 35 -47 15 -43 45 -81 74 -92 32 -13 17 -49 -45 -108 l-62 -58 54 -24 c30 -14 77 -29 104 -33 50 -9 50 -9 53 -103 2 -76 0 -97 -14 -112 -20 -22 -8 -43 31 -53 14 -4 25 -11 25 -17 0 -28 69 -89 101 -89 15 0 34 -7 43 -15 8 -8 20 -15 27 -15 7 0 20 -6 28 -14 32 -28 55 -27 88 4 32 30 32 30 150 25 176 -7 184 -6 228 15 25 12 62 20 91 20 28 0 54 3 58 7 24 25 146 44 146 23 0 -5 19 -10 43 -10 24 0 48 -5 54 -11 6 -6 37 -10 69 -10 34 0 62 -5 66 -12 5 -7 8 -3 8 11 0 17 6 22 26 22 36 0 17 23 -46 55 -30 15 -83 62 -145 130 -54 59 -111 113 -127 121 -25 13 -28 19 -28 69 0 67 12 75 105 75 57 0 66 2 61 16 -3 9 -6 20 -6 25 0 5 -11 9 -24 9 -24 0 -56 23 -56 41 0 5 -20 9 -45 9 -45 0 -45 0 -45 95 0 95 0 95 28 101 32 8 62 32 62 50 0 20 50 54 79 54 17 0 38 -11 56 -30 35 -36 40 -37 96 -6 24 13 71 27 104 30 36 4 63 12 68 21 4 8 14 15 21 15 8 0 11 10 8 31 -4 24 0 31 17 36 54 14 2 163 -58 163 -15 0 -31 8 -38 20 -10 15 -26 20 -75 22 -63 3 -63 3 -66 36 -3 33 29 81 55 82 18 0 26 58 13 91 -8 18 -10 47 -7 74 5 34 3 45 -7 45 -7 0 -19 6 -25 13 -6 8 -23 12 -41 9 -23 -3 -30 0 -30 12 0 9 -7 19 -15 22 -8 4 -15 14 -15 24 0 10 -7 20 -15 24 -17 6 -21 56 -5 56 32 0 2 20 -37 25 -27 3 -60 12 -75 20 -16 8 -28 10 -28 6 0 -5 -14 -14 -31 -21 -17 -7 -35 -24 -40 -37 -5 -13 -16 -26 -26 -30 -9 -4 -24 -14 -34 -24 -27 -27 -128 -72 -150 -66 -13 4 -19 0 -19 -13 0 -50 -97 -110 -135 -82 -15 10 -45 68 -45 84 0 8 -9 23 -20 33 -42 38 -5 145 50 145 27 0 28 1 23 43 -4 23 -9 44 -13 47 -4 3 -12 15 -19 28 -6 12 -18 22 -27 22 -8 0 -34 10 -57 21 -52 27 -160 35 -178 13 -6 -8 -18 -14 -26 -14 -8 0 -19 -13 -24 -30 -6 -16 -15 -30 -19 -30 -5 0 -12 -9 -15 -20 -5 -16 -15 -20 -51 -20 -24 0 -44 -4 -44 -10 0 -16 -46 -11 -61 6 -12 14 -28 16 -108 11 -90 -6 -171 5 -171 23 0 4 -21 5 -47 2 -33 -3 -49 -1 -57 9 -6 8 -27 22 -46 31 -48 24 -72 40 -87 58 -11 13 -15 13 -28 -4 -17 -23 -68 -16 -93 12 -9 11 -37 25 -62 32 -25 8 -50 18 -57 23 -16 11 -135 -19 -145 -38 -14 -23 -92 -29 -147 -11 -28 9 -55 16 -63 16 -7 0 -21 11 -33 24 -20 25 -20 25 -47 -4z"/>
-      <path id="pukP" transform="translate(0 483) scale(.1 -.1)" d="M4483 3254 c-35 -51 -62 -74 -88 -74 -25 0 -25 -1 -25 -85 0 -86 0 -86 50 -79 46 6 50 5 50 -15 0 -14 8 -22 28 -27 50 -11 52 -13 52 -53 0 -40 0 -40 -77 -43 -78 -3 -78 -3 -81 -48 -3 -41 0 -47 26 -62 16 -10 73 -65 126 -122 63 -68 116 -115 149 -133 44 -24 52 -33 55 -60 2 -24 -1 -33 -11 -33 -8 0 -17 -7 -21 -15 -8 -21 -56 -20 -56 1 0 13 -3 14 -15 4 -9 -8 -28 -10 -50 -6 -34 7 -35 6 -29 -21 3 -15 1 -49 -4 -74 -10 -51 -3 -78 27 -108 23 -23 26 -61 11 -128 -10 -41 17 -147 40 -163 12 -8 40 -68 40 -85 0 -9 -30 -47 -67 -84 -51 -51 -73 -82 -87 -122 -10 -30 -23 -58 -27 -63 -5 -6 -9 -17 -9 -26 0 -18 -60 -80 -78 -80 -7 0 -12 -4 -12 -10 0 -5 -18 -14 -40 -20 -22 -6 -40 -13 -40 -16 0 -16 95 -44 151 -45 89 -1 186 -17 235 -39 55 -25 100 -108 90 -167 -3 -21 -9 -61 -12 -90 -6 -48 -9 -52 -38 -58 -71 -14 -96 -26 -96 -46 0 -31 -18 -61 -58 -95 -35 -30 -35 -32 -33 -97 2 -47 -1 -67 -10 -67 -22 0 -49 -43 -49 -77 0 -18 -4 -33 -9 -33 -19 0 -24 -42 -7 -52 19 -11 51 -78 60 -128 14 -69 27 -92 50 -85 12 4 49 9 83 12 61 5 61 5 68 49 7 50 25 64 79 64 26 0 36 4 36 15 0 8 4 23 9 33 5 9 12 24 14 33 3 9 21 19 40 23 21 4 41 16 51 31 12 18 28 26 65 31 45 6 54 12 132 95 63 67 90 89 109 89 15 0 35 7 46 15 30 22 62 19 66 -7 2 -15 11 -24 25 -26 13 -2 31 -13 40 -26 10 -12 26 -25 36 -29 9 -3 22 -18 27 -31 5 -14 20 -28 32 -30 43 -9 148 -12 148 -5 0 24 -32 125 -40 127 -6 2 -10 15 -10 29 0 16 -7 27 -20 30 -26 7 -26 38 0 81 11 18 20 45 20 61 0 31 36 57 68 49 29 -8 49 22 44 65 -4 36 -3 37 26 37 17 0 34 -5 37 -10 11 -18 25 -10 25 15 0 13 6 28 14 32 11 6 12 18 3 60 -11 54 -1 83 29 83 9 0 14 11 14 30 0 22 5 30 18 30 21 0 103 -28 118 -41 7 -6 17 -2 28 10 10 11 37 21 66 25 42 6 82 26 51 26 -24 0 -12 68 16 90 30 23 23 37 -22 42 -37 4 -47 48 -19 79 21 23 5 52 -50 89 -19 14 -47 45 -61 70 -14 25 -34 59 -45 75 -20 33 -27 95 -9 95 5 0 3 10 -5 22 -22 31 -21 68 2 68 14 0 17 10 18 64 1 91 9 98 103 90 64 -5 79 -4 90 10 7 9 27 16 43 16 34 0 66 15 89 42 9 10 23 18 32 18 13 0 36 38 25 43 -1 1 -13 7 -24 14 -17 9 -24 9 -35 -3 -42 -41 -179 -24 -179 23 0 7 -9 13 -19 13 -11 0 -21 6 -23 12 -3 9 -12 8 -32 -6 -20 -13 -50 -18 -112 -19 -59 -2 -84 -6 -84 -14 0 -8 -13 -13 -32 -13 -18 0 -56 -3 -85 -6 -50 -6 -51 -6 -68 27 -10 18 -23 38 -29 44 -6 7 -22 27 -36 44 -37 49 -140 124 -180 131 -23 4 -54 -1 -88 -13 -80 -28 -127 -15 -126 36 1 21 9 46 18 56 24 26 20 49 -15 83 -26 26 -30 38 -28 77 2 53 -7 81 -27 81 -9 0 -14 12 -14 34 0 22 -6 36 -16 40 -13 5 -15 16 -9 65 6 53 4 61 -18 85 -24 26 -78 29 -93 5 -28 -46 -134 42 -134 112 0 10 -12 21 -30 28 -16 5 -30 15 -30 22 0 18 -113 3 -152 -21 -47 -28 -99 -26 -128 5 -31 33 -64 32 -87 -1z"/>
+      <linearGradient id="fadeB" x1="0" y1="0" x2="0" y2="1">
+        <stop offset=".78" stop-color="#fff"/><stop offset="1" stop-color="#000"/>
+      </linearGradient>
+      <linearGradient id="fadeT" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#000"/><stop offset=".12" stop-color="#fff"/>
+      </linearGradient>
+      <radialGradient id="vigM" cx=".5" cy=".6" r=".62">
+        <stop offset=".42" stop-color="#fff"/><stop offset=".8" stop-color="#000"/>
+      </radialGradient>
+      <mask id="edgeFade" maskUnits="userSpaceOnUse" x="0" y="0" width="59" height="100">
+        <rect width="59" height="100" fill="url(#vigM)"/>
+      </mask>
+      <clipPath id="halfL"><path id="crackL" d=""/></clipPath>
+      <clipPath id="halfR"><path id="crackR" d=""/></clipPath>
+      <g id="scene"></g>
     </defs>
-    <rect x="160" y="20" width="500" height="450" fill="url(#glow)"/>
-    <!-- red seam where the two zones met -->
-    <use href="#kdpP" fill="none" stroke="#b3322b" stroke-width="6" opacity=".9"/>
-    <use href="#pukP" fill="none" stroke="#b3322b" stroke-width="6" opacity=".9"/>
-    <g transform="translate(-13 -9)" filter="url(#shadow)"><use href="#kdpP" fill="#c99a3a"/></g>
-    <g transform="translate(13 9)" filter="url(#shadow)"><use href="#pukP" fill="#4d7348"/></g>
-    <text x="339" y="119" font-family="Vazirmatn" font-weight="800" font-size="26" fill="#141214" text-anchor="middle">پارتی</text>
-    <text x="541" y="309" font-family="Vazirmatn" font-weight="800" font-size="26" fill="#efe6d6" text-anchor="middle">یەکێتی</text>
+    <rect width="59" height="100" fill="url(#dusk)"/>
+    <g>
+      <g clip-path="url(#halfL)"><use href="#scene"/></g>
+      <g clip-path="url(#halfR)"><use href="#scene" transform="translate(.7 1.6)"/></g>
+    </g>
+    <path id="crackLine" d="" fill="none" stroke="#b3322b" stroke-width=".55" stroke-linejoin="miter"/>
+    <linearGradient id="fL" x1="0" x2="1"><stop offset="0" stop-color="#141214"/><stop offset="1" stop-color="#141214" stop-opacity="0"/></linearGradient>
+    <linearGradient id="fR" x1="1" x2="0"><stop offset="0" stop-color="#141214"/><stop offset="1" stop-color="#141214" stop-opacity="0"/></linearGradient>
+    <linearGradient id="fT" y1="0" y2="1" x2="0"><stop offset="0" stop-color="#141214"/><stop offset="1" stop-color="#141214" stop-opacity="0"/></linearGradient>
+    <linearGradient id="fB" y1="1" y2="0" x2="0"><stop offset="0" stop-color="#141214"/><stop offset="1" stop-color="#141214" stop-opacity="0"/></linearGradient>
+    <rect x="-1" y="0" width="15" height="100" fill="url(#fL)"/>
+    <rect x="45" y="0" width="15" height="100" fill="url(#fR)"/>
+    <rect x="0" y="-1" width="59" height="16" fill="url(#fT)"/>
+    <rect x="0" y="82" width="59" height="19" fill="url(#fB)"/>
   </svg>
+  <script>
+  (function(){
+    const NS='http://www.w3.org/2000/svg', S=document.getElementById('scene');
+    let seed=7; const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
+    const add=(t,a,parent=S)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);parent.appendChild(e);return e};
+    // ridge line by midpoint displacement
+    function ridge(y0,y1,rough,iters){let pts=[[-2,y0],[61,y1]];
+      for(let i=0;i<iters;i++){const n=[];for(let j=0;j<pts.length-1;j++){const a=pts[j],b=pts[j+1];
+        n.push(a,[(a[0]+b[0])/2,(a[1]+b[1])/2+(rnd()-.5)*rough]);}n.push(pts[pts.length-1]);pts=n;rough*=.55;}
+      return pts;}
+    function mountain(y0,y1,rough,fill,op,peakX,peakY){
+      let p=ridge(y0,y1,rough,7);
+      if(peakX!==undefined) p=p.map(([x,y])=>[x,y-Math.max(0,peakY*(1-Math.abs(x-peakX)/22))]);
+      add('path',{d:'M'+p.map(q=>q[0].toFixed(2)+' '+q[1].toFixed(2)).join(' L')+' L61 110 L-2 110Z',fill,opacity:op});
+      return p;}
+    // far, mid, near ranges
+    mountain(46,44,9,'#6b5640',.55,22,14);
+    mountain(56,52,8,'#4a3b2e',.85,40,10);
+    const near=mountain(70,64,6,'#2e2622',1,18,6);
+    // terraced village climbing the near slope (flat-roofed stone houses, each roof the next one's yard)
+    const V=add('g',{});
+    const rows=[[8,86,6],[12,82,6],[17,78.5,5],[22,75.5,5],[28,73,4],[34,71,4],[40,69.5,3]];
+    rows.forEach(([x0,y,n],r)=>{for(let i=0;i<n;i++){
+      const w=3.2+rnd()*1.6,h=2.4+rnd()*1.2,x=x0+i*4.6+rnd()*0.8-r*0.3, yy=y-i*1.15-rnd()*0.4;
+      add('rect',{x:x.toFixed(2),y:(yy-h).toFixed(2),width:w.toFixed(2),height:h.toFixed(2),fill:r%2?'#3a302a':'#342b26'},V);
+      add('rect',{x:(x-.3).toFixed(2),y:(yy-h-.45).toFixed(2),width:(w+.6).toFixed(2),height:'.45',fill:'#4a3d33'},V);
+      if(rnd()<.62){const wx=x+.5+rnd()*(w-1.4);
+        add('rect',{x:wx.toFixed(2),y:(yy-h+.8).toFixed(2),width:'.7',height:'.85',fill:'#e8b866',opacity:(.75+rnd()*.25).toFixed(2)},V);}
+      if(rnd()<.25){const wx=x+.4+rnd()*(w-1.2);
+        add('rect',{x:wx.toFixed(2),y:(yy-h+.8).toFixed(2),width:'.6',height:'.8',fill:'#e8b866',opacity:'.6'},V);}
+    }});
+    // foreground slope
+    mountain(92,84,4,'#1a1617',1);
+    // a few stars
+    for(let i=0;i<18;i++) add('circle',{cx:(rnd()*59).toFixed(2),cy:(rnd()*30).toFixed(2),r:(.12+rnd()*.18).toFixed(2),fill:'#efe6d6',opacity:(.25+rnd()*.5).toFixed(2)});
+    // the fissure
+    const c=[];let x=30.5;for(let y=-1;y<=101;y+=4+rnd()*4){c.push([x,y]);x=30.5+(rnd()-.5)*5.5;}
+    c.push([31,101]);
+    const line=c.map(q=>q[0].toFixed(2)+' '+q[1].toFixed(2)).join(' L');
+    document.getElementById('crackLine').setAttribute('d','M'+line);
+    document.getElementById('crackL').setAttribute('d','M-5 -5 L'+c[0][0]+' -5 L'+line+' L-5 105Z');
+    document.getElementById('crackR').setAttribute('d','M64 -5 L'+c[0][0]+' -5 L'+line+' L64 105Z');
+  })();
+  </script>
   <div class="safe">
     <div class="vrule"></div>
     <div class="vtitle"><span class="t1">لە ڕاپەڕینەوە</span><span class="t2">بۆ براکوژی</span></div>

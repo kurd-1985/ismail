@@ -9,7 +9,7 @@ const r=await p.evaluate((mm)=>{
  while(n=w.nextNode()){ if(!n.textContent.trim()||n.parentElement.closest('style,script,defs'))continue;
    const rg=document.createRange();rg.selectNodeContents(n);const R=rg.getBoundingClientRect(); if(!R.width)continue;
    items.push({what:n.textContent.trim().slice(0,28),l:X(R.left),r:X(R.right),t:Y(R.top),b:Y(R.bottom)});}
- for(const e of document.querySelectorAll('img,.isbn,svg.art use[fill]')){const R=e.getBoundingClientRect();
+ for(const e of document.querySelectorAll('img,.isbn,svg.art')){const R=e.getBoundingClientRect();
    items.push({what:e.tagName==='use'?'map':e.className||e.tagName,l:X(R.left),r:X(R.right),t:Y(R.top),b:Y(R.bottom)});}
  return items;},mm);
 // regions (mm): front board 18..169, spine core 177..200, back board 208..359, board y 18..234

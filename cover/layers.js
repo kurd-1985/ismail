@@ -3,7 +3,7 @@ const {chromium}=require('playwright');
 const OUT=process.argv[2];
 const LAYERS=[
  ['Spine band','.spine','.spine *{visibility:hidden!important}'],
- ['Map','svg.art'],
+ ['Front image - village','svg.art'],
  ['Front - vertical title','.vtitle'],
  ['Front - gold line','.vrule'],
  ['Front - subtitle and years','.subblock'],
