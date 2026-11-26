@@ -53,11 +53,10 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 .q{font-family:"Vazirmatn";font-weight:700;font-size:12.5pt;line-height:1.65;color:var(--ochre);margin-bottom:5mm}
 .blurb{font-size:10pt;line-height:1.8;text-align:justify;color:var(--paper)}
 .blurb p+p{margin-top:3mm}
-.authorbox{position:absolute;bottom:37mm;left:0;right:0;display:flex;align-items:center;gap:6mm}
-.authorbox img{width:29mm;height:36mm;object-fit:cover;filter:grayscale(1) contrast(1.05);border:.5mm solid var(--ochre);display:block}
-.authorbox .an{font-family:"Vazirmatn";font-weight:800;font-size:14pt;color:var(--paper)}
-.authorbox .al{font-size:9.5pt;color:var(--mute);margin-bottom:1mm}
-.authorbox .ar{width:14mm;height:.5mm;background:var(--red);margin-top:3mm}
+.authorbox{display:flex;flex-direction:column;align-items:center;text-align:center}
+.authorbox img{width:27mm;height:34mm;object-fit:cover;filter:grayscale(1) contrast(1.05);border:.5mm solid var(--ochre);display:block}
+.authorbox .an{font-family:"Vazirmatn";font-weight:800;font-size:11pt;color:var(--paper);white-space:nowrap;margin-top:2.5mm}
+.authorbox .ar{width:10mm;height:.5mm;background:var(--red);margin-top:1.5mm}
 /* English title, vertical, on the outer edge of the back cover (reads top-to-bottom) */
 .eng{position:absolute;top:calc(var(--bleed) + 12mm);bottom:calc(var(--bleed) + 12mm);right:calc(var(--bleed) + 9mm);
   writing-mode:vertical-rl;direction:ltr;display:flex;justify-content:space-between;font-family:"Vazirmatn";white-space:nowrap}
@@ -92,13 +91,12 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
       <p>ئەم کتێبە بە چاویلکەی کۆمەڵناسیی سیاسی، شەڕی ناوخۆی نێوان پارتی دیموکراتی کوردستان و یەکێتیی نیشتمانیی کوردستان (١٩٩٤–١٩٩٨) دەخوێنێتەوە، لە سێ تەوەرەوە: دەسەڵات، حزب و کۆمەڵگە. بەڵام لە جیاتی بەڵگەنامەی سیاسی و بیرەوەریی سەرکردەکان، گوێ لە زمانی ئەو خەڵکە دەگرێت کە لە ناو دڵی گەردەلوولەکەدا ژیان؛ ژن و پیاوانێک لە هەولێر، سلێمانی، هەڵەبجە و دهۆک.</p>
       <p>پرسیاری سەرەکیی کتێبەکە ئەمەیە: لە پشت گێڕانەوە سیاسییەکانەوە، چی بەسەر مرۆڤەکان، خێزان، دراوسێیەتی و یادەوەریی هاوبەشدا هات؟</p>
     </div>
-    <div class="authorbox">
-      <img src="author.jpg" alt="ئیسماعیل هەورامی">
-      <div><div class="al">نووسەر</div><div class="an">ئیسماعیل هەورامی</div><div class="ar"></div></div>
-    </div>
     <div class="backfoot">
+      <div class="authorbox">
+        <img src="author.jpg" alt="ئیسماعیل هەورامی">
+        <div class="an">ئیسماعیل هەورامی</div><div class="ar"></div>
+      </div>
       <div class="isbn"><div class="bars"></div>ISBN: ـــــــــ (دواتر)</div>
-      <div class="pub">کۆمەڵناسیی سیاسی<br>چاپی یەکەم</div>
     </div>
   </div>
 </section>
