@@ -49,15 +49,24 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 .spine .mark{width:5mm;height:5mm;border:.4mm solid var(--ochre);transform:rotate(45deg);writing-mode:horizontal-tb}
 
 /* ---------- BACK ---------- */
-.back .safe{position:absolute;top:calc(var(--bleed) + 16mm);left:14mm;right:calc(var(--bleed) + 14mm);bottom:calc(var(--bleed) + 12mm)}
-.q{font-family:"Vazirmatn";font-weight:700;font-size:13.5pt;line-height:1.7;color:var(--ochre);margin-bottom:7mm}
-.blurb{font-size:10.5pt;line-height:1.95;text-align:justify;color:var(--paper)}
+.back .safe{position:absolute;top:calc(var(--bleed) + 12mm);left:14mm;right:calc(var(--bleed) + 38mm);bottom:calc(var(--bleed) + 12mm)}
+.q{font-family:"Vazirmatn";font-weight:700;font-size:12.5pt;line-height:1.65;color:var(--ochre);margin-bottom:5mm}
+.blurb{font-size:10pt;line-height:1.8;text-align:justify;color:var(--paper)}
 .blurb p+p{margin-top:3mm}
-.authorbox{position:absolute;bottom:36mm;left:0;right:0;display:flex;align-items:center;gap:6mm}
-.authorbox img{width:32mm;height:40mm;object-fit:cover;filter:grayscale(1) contrast(1.05);border:.5mm solid var(--ochre);display:block}
+.authorbox{position:absolute;bottom:37mm;left:0;right:0;display:flex;align-items:center;gap:6mm}
+.authorbox img{width:29mm;height:36mm;object-fit:cover;filter:grayscale(1) contrast(1.05);border:.5mm solid var(--ochre);display:block}
 .authorbox .an{font-family:"Vazirmatn";font-weight:800;font-size:14pt;color:var(--paper)}
 .authorbox .al{font-size:9.5pt;color:var(--mute);margin-bottom:1mm}
 .authorbox .ar{width:14mm;height:.5mm;background:var(--red);margin-top:3mm}
+/* English title, vertical, on the outer edge of the back cover (reads top-to-bottom) */
+.eng{position:absolute;top:calc(var(--bleed) + 12mm);bottom:calc(var(--bleed) + 12mm);right:calc(var(--bleed) + 9mm);
+  writing-mode:vertical-rl;direction:ltr;display:flex;justify-content:space-between;font-family:"Vazirmatn";white-space:nowrap}
+.eng .et{font-weight:900;font-size:19pt;line-height:1.15;color:var(--paper);letter-spacing:.3mm}
+.eng .et b{color:var(--red);font-weight:900}
+.eng .es{font-weight:400;font-size:8.6pt;line-height:1.6;color:var(--mute);margin-top:0}
+.eng .ea{font-weight:700;font-size:11pt;color:var(--ochre);letter-spacing:.4mm}
+.erule{position:absolute;top:calc(var(--bleed) + 12mm);bottom:calc(var(--bleed) + 12mm);right:calc(var(--bleed) + 31mm);width:.35mm;
+  background:linear-gradient(var(--ochre),transparent);opacity:.55}
 .backfoot{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-end}
 .isbn{width:40mm;height:26mm;background:#fff;color:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;
   font-family:"Vazirmatn";font-size:7.5pt;direction:ltr;border-radius:1mm}
@@ -70,6 +79,12 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 
 <!-- BACK -->
 <section class="panel back">
+  <div class="erule"></div>
+  <div class="eng">
+    <div><div class="et">FROM UPRISING TO <b>FRATRICIDE</b></div>
+      <div class="es">Power, Party and Society in the Civil War of Southern Kurdistan (1994–1998)</div></div>
+    <div class="ea">ISMAIL HAWRAMI</div>
+  </div>
   <div class="safe">
     <div class="q">ئەوانەی ڕووبەڕووی یەک بوونەوە، زۆرجار خزم و دراوسێ و هاوسەنگەری دوێنێ بوون.</div>
     <div class="blurb">
