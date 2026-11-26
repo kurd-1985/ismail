@@ -4,36 +4,41 @@
 <meta charset="utf-8">
 <title>بەرگی کتێب: لە ڕاپەڕینەوە بۆ براکوژی</title>
 <style>
-/* Wrap cover, A5 trim 148x210 mm, spine 16 mm (303 pp), bleed 3 mm.
+/* HARDCOVER case wrap. Book block A5 148x210 mm, 303 pp.
+   Boards 151x216 mm (3 mm overhang), board thickness ~2.5 mm.
+   Spine 21 mm (book block ~15.5 mm + boards), joint/hinge 8 mm each side, turn-in wrap 18 mm.
+   --bleed below = the 18 mm wrap; --trimW = board width; --spine = joint + spine + joint.
+   Total 375 x 252 mm. Printer must confirm board size, spine and wrap.
    RTL book: front on the LEFT, back on the RIGHT. */
-@page { size: 318mm 216mm; margin: 0; }
+@page { size: 375mm 252mm; margin: 0; }
 :root{
   --ink:#141214; --ink2:#1d1a1c; --paper:#efe6d6; --ochre:#c9a15b; --red:#b3322b; --mute:#9d9184;
-  --bleed:3mm; --trimW:148mm; --spine:16mm; --H:216mm;
+  --bleed:18mm; --trimW:151mm; --spine:37mm; --spineCore:21mm; --H:252mm;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:318mm;height:216mm;background:var(--ink)}
+html,body{width:375mm;height:252mm;background:var(--ink)}
 body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;color:var(--paper);
   -webkit-print-color-adjust:exact;print-color-adjust:exact}
 .panel{position:absolute;top:0;height:var(--H)}
 .front{left:0;width:calc(var(--bleed) + var(--trimW))}
-.spine{left:calc(var(--bleed) + var(--trimW));width:var(--spine);background:var(--ink2)}
+.spine{left:calc(var(--bleed) + var(--trimW));width:var(--spine)}
+.spine::before{content:"";position:absolute;top:0;bottom:0;left:calc((var(--spine) - var(--spineCore)) / 2);width:var(--spineCore);background:var(--ink2)}
 .back {left:calc(var(--bleed) + var(--trimW) + var(--spine));width:calc(var(--trimW) + var(--bleed))}
 
 /* subtle grain */
 .grain{position:absolute;inset:0;opacity:.18;mix-blend-mode:screen;pointer-events:none}
 
 /* ---------- FRONT ---------- */
-.front .art{position:absolute;left:11mm;top:24mm;width:84mm;height:76mm}
+.front .art{position:absolute;left:calc(var(--bleed) + 7mm);top:calc(var(--bleed) + 22mm);width:72mm;height:66mm}
 .front .safe{position:absolute;top:calc(var(--bleed) + 9mm);left:calc(var(--bleed) + 10mm);right:10mm;bottom:calc(var(--bleed) + 10mm)}
 /* vertical title column on the spine side; reads top-to-bottom, first line on the left */
-.vtitle{position:absolute;top:0;right:0;height:184mm;writing-mode:vertical-rl;transform:rotate(180deg);
+.vtitle{position:absolute;top:0;right:0;height:196mm;writing-mode:vertical-rl;transform:rotate(180deg);
   font-family:"Vazirmatn";white-space:nowrap;text-align:start}
-.vtitle .t1{display:block;font-weight:700;font-size:30pt;line-height:1.55;color:var(--paper)}
-.vtitle .t2{display:block;font-weight:900;font-size:58pt;line-height:1.25;color:var(--red)}
-.vrule{position:absolute;top:0;right:44mm;width:.35mm;height:184mm;background:linear-gradient(var(--ochre),transparent);opacity:.55}
-.leftcol{position:absolute;left:0;width:76mm;text-align:center}
-.subblock{top:118mm}
+.vtitle .t1{display:block;font-weight:700;font-size:32pt;line-height:1.5;color:var(--paper)}
+.vtitle .t2{display:block;font-weight:900;font-size:92pt;line-height:1.18;color:var(--red)}
+.vrule{position:absolute;top:0;right:66mm;width:.35mm;height:196mm;background:linear-gradient(var(--ochre),transparent);opacity:.55}
+.leftcol{position:absolute;left:0;width:68mm;text-align:center}
+.subblock{top:124mm}
 .rule{width:24mm;height:.5mm;background:var(--ochre);margin:0 auto 5mm}
 .sub{font-size:12.5pt;line-height:1.8;color:var(--paper);opacity:.92}
 .years{margin-top:4mm;font-family:"Vazirmatn";font-weight:500;font-size:10.5pt;letter-spacing:.5mm;color:var(--ochre);direction:ltr}
@@ -41,11 +46,11 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 .author small{display:block;font-family:"Noto Naskh Arabic";font-weight:400;font-size:9pt;color:var(--mute);margin-bottom:1mm}
 
 /* ---------- SPINE ---------- */
-.spine .v{position:absolute;inset:9mm 0 10mm;display:flex;align-items:center;justify-content:space-between;
+.spine .v{position:absolute;inset:calc(var(--bleed) + 10mm) 0 calc(var(--bleed) + 11mm);display:flex;align-items:center;justify-content:space-between;
   writing-mode:vertical-rl;white-space:nowrap;transform:rotate(180deg)}
-.spine .st{font-family:"Vazirmatn";font-weight:800;font-size:22pt;line-height:1;color:var(--paper)}
+.spine .st{font-family:"Vazirmatn";font-weight:800;font-size:27pt;line-height:1;color:var(--paper)}
 .spine .st b{color:var(--red);font-weight:900}
-.spine .sa{font-family:"Vazirmatn";font-weight:700;font-size:10.5pt;color:var(--ochre)}
+.spine .sa{font-family:"Vazirmatn";font-weight:700;font-size:12pt;color:var(--ochre)}
 .spine .mark{width:5mm;height:5mm;border:.4mm solid var(--ochre);transform:rotate(45deg);writing-mode:horizontal-tb}
 
 /* ---------- BACK ---------- */
@@ -72,6 +77,14 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 .isbn .bars{width:32mm;height:13mm;background:repeating-linear-gradient(90deg,#bbb 0 .5mm,#fff .5mm 1.2mm);margin-bottom:1.5mm}
 .pub{font-family:"Vazirmatn";font-size:9pt;color:var(--mute);text-align:right;line-height:1.6}
 .diamond{display:inline-block;width:2.6mm;height:2.6mm;background:var(--red);transform:rotate(45deg);margin:0 2mm}
+
+/* preview only: simulate the raised (embossed) title */
+body.preview .vtitle span, body.preview .spine .st{text-shadow:-.25mm -.25mm 0 rgba(255,255,255,.22), .35mm .45mm .5mm rgba(0,0,0,.85)}
+/* emboss mask for the printer: black = raised area */
+body.mask, body.mask *{background:transparent!important;color:transparent!important;border-color:transparent!important;text-shadow:none!important}
+html:has(body.mask), body.mask{background:#fff!important}
+body.mask svg, body.mask img, body.mask .isbn, body.mask .vrule, body.mask .erule, body.mask .rule, body.mask .ar, body.mask .spine::before{visibility:hidden}
+body.mask .vtitle span, body.mask .spine .st, body.mask .spine .st b{color:#000!important}
 </style>
 </head>
 <body>
