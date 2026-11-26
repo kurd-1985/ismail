@@ -24,7 +24,7 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 .grain{position:absolute;inset:0;opacity:.18;mix-blend-mode:screen;pointer-events:none}
 
 /* ---------- FRONT ---------- */
-.front .art{position:absolute;left:6mm;top:0;width:90mm;height:120mm}
+.front .art{position:absolute;left:6mm;top:8mm;width:90mm;height:120mm}
 .front .safe{position:absolute;top:calc(var(--bleed) + 9mm);left:calc(var(--bleed) + 10mm);right:10mm;bottom:calc(var(--bleed) + 10mm)}
 /* vertical title column on the spine side; reads top-to-bottom, first line on the left */
 .vtitle{position:absolute;top:0;right:0;height:184mm;writing-mode:vertical-rl;transform:rotate(180deg);
@@ -89,26 +89,48 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 
 <!-- FRONT -->
 <section class="panel front">
-  <!-- Art: a rising sun (the 1991 uprising) split by a crack (the 1994 war); the two halves no longer meet. -->
-  <svg class="art" viewBox="32 0 90 120" preserveAspectRatio="xMidYMid slice">
+  <!-- Art: an old family photograph torn in two. Two brothers stand arm in arm in the middle;
+       the tear runs between them (kin, neighbours and comrades split into two fronts). -->
+  <svg class="art" viewBox="0 0 90 120" preserveAspectRatio="xMidYMid meet">
     <defs>
-      <radialGradient id="glow" gradientUnits="userSpaceOnUse" cx="77" cy="68" r="45">
-        <stop offset="0" stop-color="#c9a15b" stop-opacity=".38"/>
-        <stop offset=".55" stop-color="#c9a15b" stop-opacity=".08"/>
+      <radialGradient id="glow" gradientUnits="userSpaceOnUse" cx="45" cy="62" r="46">
+        <stop offset="0" stop-color="#c9a15b" stop-opacity=".22"/>
         <stop offset="1" stop-color="#c9a15b" stop-opacity="0"/>
       </radialGradient>
-      <g id="sun">
-        <circle cx="77" cy="68" r="19" fill="#c9a15b"/>
-        <g stroke="#c9a15b" stroke-width="1.3" stroke-linecap="round" id="rays"></g>
+      <linearGradient id="sepia" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#d9c29a"/><stop offset="1" stop-color="#b8975f"/>
+      </linearGradient>
+      <radialGradient id="vig" cx="50%" cy="45%" r="70%">
+        <stop offset=".55" stop-color="#3a2618" stop-opacity="0"/><stop offset="1" stop-color="#3a2618" stop-opacity=".55"/>
+      </radialGradient>
+      <filter id="age"><feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" seed="4"/>
+        <feColorMatrix values="0 0 0 0 .23  0 0 0 0 .15  0 0 0 0 .09  0 0 0 .35 0"/>
+        <feComposite in2="SourceGraphic" operator="in"/></filter>
+      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx=".8" dy="1.4" stdDeviation="1.4" flood-color="#000" flood-opacity=".6"/></filter>
+      <g id="photo">
+        <rect x="0" y="0" width="72" height="56" fill="#ece3d1"/>
+        <g clip-path="url(#inner)">
+          <rect x="3" y="3" width="66" height="45" fill="url(#sepia)"/>
+          <path d="M3 30 Q20 26 36 29 T69 27 V48 H3Z" fill="#a9844f" opacity=".5"/>
+          <g id="people" fill="#3b2a1d" stroke="#c9ad7c" stroke-width=".55" stroke-linejoin="round"></g>
+          <rect x="3" y="3" width="66" height="45" fill="url(#vig)"/>
+          <rect x="3" y="3" width="66" height="45" fill="#fff" filter="url(#age)"/>
+        </g>
+        <text x="66" y="53.2" font-family="Noto Naskh Arabic" font-size="2.6" fill="#7a6a55" text-anchor="start" direction="rtl">بەهاری ١٩٩١</text>
       </g>
-      <clipPath id="L"><path d="M0 0 H79 L75 20 L81 34 L74 50 L80 66 L73 82 L78 98 L77 108 L76 120 H0Z"/></clipPath>
-      <clipPath id="R"><path d="M154 0 H79 L75 20 L81 34 L74 50 L80 66 L73 82 L78 98 L77 108 L76 120 H154Z"/></clipPath>
+      <clipPath id="inner"><rect x="3" y="3" width="66" height="45"/></clipPath>
+      <clipPath id="Lh"><path d="M-2 -2 H37 L35.2 6 L37.6 11 L34.8 17 L37.2 24 L35 31 L37.8 38 L35.4 45 L37 51 L35.8 58 H-2Z"/></clipPath>
+      <clipPath id="Rh"><path d="M74 -2 H37 L35.2 6 L37.6 11 L34.8 17 L37.2 24 L35 31 L37.8 38 L35.4 45 L37 51 L35.8 58 H74Z"/></clipPath>
     </defs>
-    <rect width="154" height="120" fill="url(#glow)"/>
-    <g clip-path="url(#L)"><use href="#sun" transform="translate(-1.6 0)"/></g>
-    <g clip-path="url(#R)"><use href="#sun" transform="translate(1.6 4.5)" opacity=".55"/></g>
-    <path d="M79 0 L75 20 L81 34 L74 50 L80 66 L73 82 L78 98 L77 108" fill="none" stroke="#b3322b" stroke-width="1.1" stroke-linejoin="miter"/>
-    <line x1="38" y1="94" x2="116" y2="94" stroke="#c9a15b" stroke-width=".25" opacity=".5"/>
+    <rect width="90" height="120" fill="url(#glow)"/>
+    <g transform="translate(6 30) rotate(-4 36 28)">
+      <g clip-path="url(#Lh)" filter="url(#shadow)"><use href="#photo"/></g>
+      <path d="M37 -2 L35.2 6 L37.6 11 L34.8 17 L37.2 24 L35 31 L37.8 38 L35.4 45 L37 51 L35.8 58" fill="none" stroke="#f4ecdd" stroke-width=".7" transform="translate(-.35 0)"/>
+    </g>
+    <g transform="translate(12 36) rotate(5 36 28)">
+      <g clip-path="url(#Rh)" filter="url(#shadow)"><use href="#photo"/></g>
+      <path d="M37 -2 L35.2 6 L37.6 11 L34.8 17 L37.2 24 L35 31 L37.8 38 L35.4 45 L37 51 L35.8 58" fill="none" stroke="#f4ecdd" stroke-width=".7" transform="translate(.35 0)"/>
+    </g>
   </svg>
   <div class="safe">
     <div class="vrule"></div>
@@ -123,12 +145,29 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 </section>
 
 <script>
-// draw sun rays
-const g=document.getElementById('rays');const cx=77,cy=68;
-for(let i=0;i<21;i++){const a=Math.PI+Math.PI*i/20;const r1=24,r2=i%2?34:44;
- const l=document.createElementNS('http://www.w3.org/2000/svg','line');
- l.setAttribute('x1',cx+r1*Math.cos(a));l.setAttribute('y1',cy+r1*Math.sin(a));
- l.setAttribute('x2',cx+r2*Math.cos(a));l.setAttribute('y2',cy+r2*Math.sin(a));g.appendChild(l);}
+// half-length group portrait drawn as simple silhouettes (photo coords)
+const NS='http://www.w3.org/2000/svg',P=document.getElementById('people');
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);P.appendChild(e);return e}
+function person(x,top,s,kind){ // s = scale, top = top of head
+  const r=3.0*s, cy=top+r, neck=cy+r*0.8, w=15*s;
+  const body=`M${x-w*0.16} ${neck} C${x-w*0.42} ${neck} ${x-w*0.5} ${neck+w*0.07} ${x-w*0.5} ${neck+w*0.3} L${x-w*0.47} 60 L${x+w*0.47} 60 L${x+w*0.5} ${neck+w*0.3} C${x+w*0.5} ${neck+w*0.07} ${x+w*0.42} ${neck} ${x+w*0.16} ${neck}Z`;
+  if(kind==='woman'){ // headscarf falling over the shoulders
+    el('path',{d:body});
+    el('path',{d:`M${x-r*1.2} ${neck+r*0.9} Q${x-r*1.45} ${top-0.6*s} ${x} ${top-0.6*s} Q${x+r*1.45} ${top-0.6*s} ${x+r*1.2} ${neck+r*0.9}Z`});
+    el('circle',{cx:x,cy:cy+0.4*s,r:r*0.82,fill:'#4e3a29',stroke:'none'});return;
+  }
+  el('path',{d:body});
+  el('rect',{x:x-r*0.42,y:cy+r*0.5,width:r*0.84,height:r*0.75,stroke:'none'});
+  el('circle',{cx:x,cy:cy,r:r});
+  if(kind==='old') el('path',{d:`M${x-r*1.2} ${cy-r*0.25} Q${x-r*1.25} ${top-1.2*s} ${x} ${top-1.3*s} Q${x+r*1.25} ${top-1.2*s} ${x+r*1.2} ${cy-r*0.25}Z`}); // jamana
+}
+person(10.5,17,0.95,'old');
+person(21.5,15,0.95,'woman');
+person(31,11,1.0,'young');   // brother 1
+person(42.5,11.5,1.0,'man');     // brother 2
+person(53.5,16,0.92,'man');
+person(62.5,23,0.75,'child');
+// brother 1's arm across brother 2's shoulders, cut by the tear
 </script>
 </body>
 </html>
