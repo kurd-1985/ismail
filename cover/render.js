@@ -1,5 +1,5 @@
 const {chromium}=require('playwright');(async()=>{
-const W=375,H=252,WRAP=18,BW=151,BH=216; const mm=96/25.4;
+const W=377,H=252,WRAP=18,BW=151,BH=216; const mm=96/25.4;
 const dir='/home/user/ismail/cover', S='/tmp/claude-0/-home-user-ismail/d8bd8f2b-17f5-5a96-b9d6-5fd1b661814e/scratchpad';
 const b=await chromium.launch();
 async function page(cls,scale=1){const p=await b.newPage({viewport:{width:Math.ceil(W*mm),height:Math.ceil(H*mm)},deviceScaleFactor:scale});

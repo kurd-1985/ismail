@@ -6,17 +6,18 @@
 <style>
 /* HARDCOVER case wrap. Book block A5 148x210 mm, 303 pp.
    Boards 151x216 mm (3 mm overhang), board thickness ~2.5 mm.
-   Spine 21 mm (book block ~15.5 mm + boards), joint/hinge 8 mm each side, turn-in wrap 18 mm.
+   Spine 23 mm: 303 pp (Word count) = 152 leaves x ~0.11 mm (80 g/m2) = ~16.7 mm block + ~6 mm boards/case.
+   Joint/hinge 8 mm each side, turn-in wrap 18 mm.
    --bleed below = the 18 mm wrap; --trimW = board width; --spine = joint + spine + joint.
-   Total 375 x 252 mm. Printer must confirm board size, spine and wrap.
+   Total 377 x 252 mm. Printer must confirm board size, spine and wrap.
    RTL book: front on the LEFT, back on the RIGHT. */
-@page { size: 375mm 252mm; margin: 0; }
+@page { size: 377mm 252mm; margin: 0; }
 :root{
   --ink:#141214; --ink2:#1d1a1c; --paper:#efe6d6; --ochre:#c9a15b; --red:#b3322b; --mute:#9d9184;
-  --bleed:18mm; --trimW:151mm; --spine:37mm; --spineCore:21mm; --H:252mm;
+  --bleed:18mm; --trimW:151mm; --spine:39mm; --spineCore:23mm; --H:252mm;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:375mm;height:252mm;background:var(--ink)}
+html,body{width:377mm;height:252mm;background:var(--ink)}
 body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;color:var(--paper);
   -webkit-print-color-adjust:exact;print-color-adjust:exact}
 .panel{position:absolute;top:0;height:var(--H)}
@@ -49,9 +50,9 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 /* ---------- SPINE ---------- */
 .spine .v{position:absolute;inset:calc(var(--bleed) + 13mm) 0 calc(var(--bleed) + 13mm);display:flex;align-items:center;justify-content:space-between;
   writing-mode:vertical-rl;white-space:nowrap;transform:rotate(180deg)}
-.spine .st{font-family:"Vazirmatn";font-weight:800;font-size:27pt;line-height:1;color:var(--paper)}
+.spine .st{font-family:"Vazirmatn";font-weight:800;font-size:29pt;line-height:1;color:var(--paper)}
 .spine .st b{color:var(--red);font-weight:900}
-.spine .sa{font-family:"Vazirmatn";font-weight:700;font-size:12pt;color:var(--ochre)}
+.spine .sa{font-family:"Vazirmatn";font-weight:700;font-size:13pt;color:var(--ochre)}
 .spine .mark{width:5mm;height:5mm;border:.4mm solid var(--ochre);transform:rotate(45deg);writing-mode:horizontal-tb}
 
 /* ---------- BACK ---------- */
