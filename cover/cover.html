@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>بەرگی کتێب: لە ڕاپەڕینەوە بۆ براکوژی</title>
+<style>
+/* Wrap cover, A5 trim 148x210 mm, spine 16 mm (303 pp), bleed 3 mm.
+   RTL book: back on the LEFT, front on the RIGHT. */
+@page { size: 318mm 216mm; margin: 0; }
+:root{
+  --ink:#141214; --ink2:#1d1a1c; --paper:#efe6d6; --ochre:#c9a15b; --red:#b3322b; --mute:#9d9184;
+  --bleed:3mm; --trimW:148mm; --spine:16mm; --H:216mm;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:318mm;height:216mm;background:var(--ink)}
+body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;color:var(--paper);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.panel{position:absolute;top:0;height:var(--H)}
+.back {left:0;width:calc(var(--bleed) + var(--trimW))}
+.spine{left:calc(var(--bleed) + var(--trimW));width:var(--spine);background:var(--ink2)}
+.front{left:calc(var(--bleed) + var(--trimW) + var(--spine));width:calc(var(--trimW) + var(--bleed))}
+
+/* subtle grain */
+.grain{position:absolute;inset:0;opacity:.18;mix-blend-mode:screen;pointer-events:none}
+
+/* ---------- FRONT ---------- */
+.front .art{position:absolute;left:0;top:0;width:154mm;height:120mm}
+.front .safe{position:absolute;top:calc(var(--bleed) + 9mm);left:10mm;right:calc(var(--bleed) + 10mm);bottom:calc(var(--bleed) + 10mm)}
+.years{position:absolute;top:0;left:0;right:0;text-align:center;font-family:"Vazirmatn";font-weight:500;
+  font-size:10pt;letter-spacing:.5mm;color:var(--ochre);direction:ltr}
+.titleblock{position:absolute;top:104mm;left:0;right:0;text-align:center}
+.t1{font-family:"Vazirmatn";font-weight:700;font-size:25pt;line-height:1.25;color:var(--paper)}
+.t2{font-family:"Vazirmatn";font-weight:900;font-size:50pt;line-height:1.15;color:var(--red);margin-top:-1mm}
+.rule{width:30mm;height:.5mm;background:var(--ochre);margin:6mm auto 5mm}
+.sub{font-size:12.5pt;line-height:1.75;color:var(--paper);opacity:.92;padding:0 4mm}
+.author{position:absolute;bottom:0;left:0;right:0;text-align:center;font-family:"Vazirmatn";font-weight:700;
+  font-size:15pt;color:var(--paper)}
+.author small{display:block;font-family:"Noto Naskh Arabic";font-weight:400;font-size:9pt;color:var(--mute);margin-bottom:1mm}
+
+/* ---------- SPINE ---------- */
+.spine .v{position:absolute;inset:8mm 0;display:flex;align-items:center;justify-content:space-between;
+  writing-mode:vertical-rl;white-space:nowrap;transform:rotate(180deg)}
+.spine .st{font-family:"Vazirmatn";font-weight:800;font-size:12.5pt;color:var(--paper)}
+.spine .st b{color:var(--red);font-weight:900}
+.spine .sa{font-family:"Vazirmatn";font-weight:500;font-size:9.5pt;color:var(--ochre)}
+.spine .mark{width:5mm;height:5mm;border:.4mm solid var(--ochre);transform:rotate(45deg);writing-mode:horizontal-tb}
+
+/* ---------- BACK ---------- */
+.back .safe{position:absolute;top:calc(var(--bleed) + 16mm);left:calc(var(--bleed) + 14mm);right:14mm;bottom:calc(var(--bleed) + 12mm)}
+.q{font-family:"Vazirmatn";font-weight:700;font-size:13.5pt;line-height:1.7;color:var(--ochre);margin-bottom:7mm}
+.blurb{font-size:10.5pt;line-height:1.95;text-align:justify;color:var(--paper)}
+.blurb p+p{margin-top:3mm}
+.backfoot{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-end}
+.isbn{width:40mm;height:26mm;background:#fff;color:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:"Vazirmatn";font-size:7.5pt;direction:ltr;border-radius:1mm}
+.isbn .bars{width:32mm;height:13mm;background:repeating-linear-gradient(90deg,#bbb 0 .5mm,#fff .5mm 1.2mm);margin-bottom:1.5mm}
+.pub{font-family:"Vazirmatn";font-size:9pt;color:var(--mute);text-align:right;line-height:1.6}
+.diamond{display:inline-block;width:2.6mm;height:2.6mm;background:var(--red);transform:rotate(45deg);margin:0 2mm}
+</style>
+</head>
+<body>
+
+<!-- BACK -->
+<section class="panel back">
+  <div class="safe">
+    <div class="q">ئەوانەی ڕووبەڕووی یەک بوونەوە، زۆرجار خزم و دراوسێ و هاوسەنگەری دوێنێ بوون.</div>
+    <div class="blurb">
+      <p>لە ڕاپەڕینی بەهاری ١٩٩١ـەوە تا شەڕی بەهاری ١٩٩٤، کۆمەڵگەی کوردی ڕێگایەکی کورت و تراژیدی بڕی: هەمان ئەو خەڵکەی پێکەوە ڕاپەڕین، بەسەر دوو بەرەدا دابەش کران.</p>
+      <p>ئەم کتێبە بە چاویلکەی کۆمەڵناسیی سیاسی، شەڕی ناوخۆی نێوان پارتی دیموکراتی کوردستان و یەکێتیی نیشتمانیی کوردستان (١٩٩٤–١٩٩٨) دەخوێنێتەوە، لە سێ تەوەرەوە: دەسەڵات، حزب و کۆمەڵگە. بەڵام لە جیاتی بەڵگەنامەی سیاسی و بیرەوەریی سەرکردەکان، گوێ لە زمانی ئەو خەڵکە دەگرێت کە لە ناو دڵی گەردەلوولەکەدا ژیان؛ ژن و پیاوانێک لە هەولێر، سلێمانی، هەڵەبجە و دهۆک.</p>
+      <p>پرسیاری سەرەکیی کتێبەکە ئەمەیە: لە پشت گێڕانەوە سیاسییەکانەوە، چی بەسەر مرۆڤەکان، خێزان، دراوسێیەتی و یادەوەریی هاوبەشدا هات؟</p>
+    </div>
+    <div class="backfoot">
+      <div class="isbn"><div class="bars"></div>ISBN: ـــــــــ (دواتر)</div>
+      <div class="pub">کۆمەڵناسیی سیاسی<br>چاپی یەکەم</div>
+    </div>
+  </div>
+</section>
+
+<!-- SPINE -->
+<section class="panel spine">
+  <div class="v">
+    <span class="st">لە ڕاپەڕینەوە <b>بۆ براکوژی</b></span>
+    <span class="mark"></span>
+    <span class="sa">ئیسماعیل هەورامی</span>
+  </div>
+</section>
+
+<!-- FRONT -->
+<section class="panel front">
+  <!-- Art: a rising sun (the 1991 uprising) split by a crack (the 1994 war); the two halves no longer meet. -->
+  <svg class="art" viewBox="0 0 154 120" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <radialGradient id="glow" cx="50%" cy="58%" r="55%">
+        <stop offset="0" stop-color="#c9a15b" stop-opacity=".38"/>
+        <stop offset=".55" stop-color="#c9a15b" stop-opacity=".08"/>
+        <stop offset="1" stop-color="#141214" stop-opacity="0"/>
+      </radialGradient>
+      <g id="sun">
+        <circle cx="77" cy="68" r="19" fill="#c9a15b"/>
+        <g stroke="#c9a15b" stroke-width="1.3" stroke-linecap="round" id="rays"></g>
+      </g>
+      <clipPath id="L"><path d="M0 0 H79 L75 20 L81 34 L74 50 L80 66 L73 82 L78 98 L77 108 L76 120 H0Z"/></clipPath>
+      <clipPath id="R"><path d="M154 0 H79 L75 20 L81 34 L74 50 L80 66 L73 82 L78 98 L77 108 L76 120 H154Z"/></clipPath>
+    </defs>
+    <rect width="154" height="120" fill="url(#glow)"/>
+    <g clip-path="url(#L)"><use href="#sun" transform="translate(-1.6 0)"/></g>
+    <g clip-path="url(#R)"><use href="#sun" transform="translate(1.6 4.5)" opacity=".55"/></g>
+    <path d="M79 0 L75 20 L81 34 L74 50 L80 66 L73 82 L78 98 L77 108" fill="none" stroke="#b3322b" stroke-width="1.1" stroke-linejoin="miter"/>
+    <line x1="20" y1="94" x2="134" y2="94" stroke="#c9a15b" stroke-width=".25" opacity=".5"/>
+  </svg>
+  <div class="safe">
+    <div class="years">1994 – 1998</div>
+    <div class="titleblock">
+      <div class="t1">لە ڕاپەڕینەوە</div>
+      <div class="t2">بۆ براکوژی</div>
+      <div class="rule"></div>
+      <div class="sub">دەسەڵات، حزب و کۆمەڵگە<br>لە شەڕی ناوخۆی باشووری کوردستاندا</div>
+    </div>
+    <div class="author"><small>نووسین و ئامادەکردنی</small>ئیسماعیل هەورامی</div>
+  </div>
+</section>
+
+<script>
+// draw sun rays
+const g=document.getElementById('rays');const cx=77,cy=68;
+for(let i=0;i<21;i++){const a=Math.PI+Math.PI*i/20;const r1=24,r2=i%2?34:44;
+ const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+ l.setAttribute('x1',cx+r1*Math.cos(a));l.setAttribute('y1',cy+r1*Math.sin(a));
+ l.setAttribute('x2',cx+r2*Math.cos(a));l.setAttribute('y2',cy+r2*Math.sin(a));g.appendChild(l);}
+</script>
+</body>
+</html>
