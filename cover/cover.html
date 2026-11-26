@@ -24,25 +24,28 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 .grain{position:absolute;inset:0;opacity:.18;mix-blend-mode:screen;pointer-events:none}
 
 /* ---------- FRONT ---------- */
-.front .art{position:absolute;left:0;top:0;width:154mm;height:120mm}
+.front .art{position:absolute;left:6mm;top:0;width:90mm;height:120mm}
 .front .safe{position:absolute;top:calc(var(--bleed) + 9mm);left:calc(var(--bleed) + 10mm);right:10mm;bottom:calc(var(--bleed) + 10mm)}
-.years{position:absolute;top:0;left:0;right:0;text-align:center;font-family:"Vazirmatn";font-weight:500;
-  font-size:10pt;letter-spacing:.5mm;color:var(--ochre);direction:ltr}
-.titleblock{position:absolute;top:104mm;left:0;right:0;text-align:center}
-.t1{font-family:"Vazirmatn";font-weight:700;font-size:25pt;line-height:1.25;color:var(--paper)}
-.t2{font-family:"Vazirmatn";font-weight:900;font-size:50pt;line-height:1.15;color:var(--red);margin-top:-1mm}
-.rule{width:30mm;height:.5mm;background:var(--ochre);margin:6mm auto 5mm}
-.sub{font-size:12.5pt;line-height:1.75;color:var(--paper);opacity:.92;padding:0 4mm}
-.author{position:absolute;bottom:0;left:0;right:0;text-align:center;font-family:"Vazirmatn";font-weight:700;
-  font-size:15pt;color:var(--paper)}
+/* vertical title column on the spine side; reads top-to-bottom, first line on the left */
+.vtitle{position:absolute;top:0;right:0;height:184mm;writing-mode:vertical-rl;transform:rotate(180deg);
+  font-family:"Vazirmatn";white-space:nowrap;text-align:start}
+.vtitle .t1{display:block;font-weight:700;font-size:30pt;line-height:1.55;color:var(--paper)}
+.vtitle .t2{display:block;font-weight:900;font-size:58pt;line-height:1.25;color:var(--red)}
+.vrule{position:absolute;top:0;right:44mm;width:.35mm;height:184mm;background:linear-gradient(var(--ochre),transparent);opacity:.55}
+.leftcol{position:absolute;left:0;width:76mm;text-align:center}
+.subblock{top:118mm}
+.rule{width:24mm;height:.5mm;background:var(--ochre);margin:0 auto 5mm}
+.sub{font-size:12.5pt;line-height:1.8;color:var(--paper);opacity:.92}
+.years{margin-top:4mm;font-family:"Vazirmatn";font-weight:500;font-size:10.5pt;letter-spacing:.5mm;color:var(--ochre);direction:ltr}
+.author{bottom:0;font-family:"Vazirmatn";font-weight:700;font-size:15pt;color:var(--paper)}
 .author small{display:block;font-family:"Noto Naskh Arabic";font-weight:400;font-size:9pt;color:var(--mute);margin-bottom:1mm}
 
 /* ---------- SPINE ---------- */
-.spine .v{position:absolute;inset:8mm 0;display:flex;align-items:center;justify-content:space-between;
+.spine .v{position:absolute;inset:9mm 0 10mm;display:flex;align-items:center;justify-content:space-between;
   writing-mode:vertical-rl;white-space:nowrap;transform:rotate(180deg)}
-.spine .st{font-family:"Vazirmatn";font-weight:800;font-size:12.5pt;color:var(--paper)}
+.spine .st{font-family:"Vazirmatn";font-weight:800;font-size:22pt;line-height:1;color:var(--paper)}
 .spine .st b{color:var(--red);font-weight:900}
-.spine .sa{font-family:"Vazirmatn";font-weight:500;font-size:9.5pt;color:var(--ochre)}
+.spine .sa{font-family:"Vazirmatn";font-weight:700;font-size:10.5pt;color:var(--ochre)}
 .spine .mark{width:5mm;height:5mm;border:.4mm solid var(--ochre);transform:rotate(45deg);writing-mode:horizontal-tb}
 
 /* ---------- BACK ---------- */
@@ -80,20 +83,19 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
 <section class="panel spine">
   <div class="v">
     <span class="st">لە ڕاپەڕینەوە <b>بۆ براکوژی</b></span>
-    <span class="mark"></span>
-    <span class="sa">ئیسماعیل هەورامی</span>
+        <span class="sa">ئیسماعیل هەورامی</span>
   </div>
 </section>
 
 <!-- FRONT -->
 <section class="panel front">
   <!-- Art: a rising sun (the 1991 uprising) split by a crack (the 1994 war); the two halves no longer meet. -->
-  <svg class="art" viewBox="0 0 154 120" preserveAspectRatio="xMidYMid slice">
+  <svg class="art" viewBox="32 0 90 120" preserveAspectRatio="xMidYMid slice">
     <defs>
-      <radialGradient id="glow" cx="50%" cy="58%" r="55%">
+      <radialGradient id="glow" gradientUnits="userSpaceOnUse" cx="77" cy="68" r="45">
         <stop offset="0" stop-color="#c9a15b" stop-opacity=".38"/>
         <stop offset=".55" stop-color="#c9a15b" stop-opacity=".08"/>
-        <stop offset="1" stop-color="#141214" stop-opacity="0"/>
+        <stop offset="1" stop-color="#c9a15b" stop-opacity="0"/>
       </radialGradient>
       <g id="sun">
         <circle cx="77" cy="68" r="19" fill="#c9a15b"/>
@@ -106,17 +108,17 @@ body{position:relative;overflow:hidden;font-family:"Noto Naskh Arabic",serif;col
     <g clip-path="url(#L)"><use href="#sun" transform="translate(-1.6 0)"/></g>
     <g clip-path="url(#R)"><use href="#sun" transform="translate(1.6 4.5)" opacity=".55"/></g>
     <path d="M79 0 L75 20 L81 34 L74 50 L80 66 L73 82 L78 98 L77 108" fill="none" stroke="#b3322b" stroke-width="1.1" stroke-linejoin="miter"/>
-    <line x1="20" y1="94" x2="134" y2="94" stroke="#c9a15b" stroke-width=".25" opacity=".5"/>
+    <line x1="38" y1="94" x2="116" y2="94" stroke="#c9a15b" stroke-width=".25" opacity=".5"/>
   </svg>
   <div class="safe">
-    <div class="years">1994 – 1998</div>
-    <div class="titleblock">
-      <div class="t1">لە ڕاپەڕینەوە</div>
-      <div class="t2">بۆ براکوژی</div>
+    <div class="vrule"></div>
+    <div class="vtitle"><span class="t1">لە ڕاپەڕینەوە</span><span class="t2">بۆ براکوژی</span></div>
+    <div class="leftcol subblock">
       <div class="rule"></div>
       <div class="sub">دەسەڵات، حزب و کۆمەڵگە<br>لە شەڕی ناوخۆی باشووری کوردستاندا</div>
+      <div class="years">1994 – 1998</div>
     </div>
-    <div class="author"><small>نووسین و ئامادەکردنی</small>ئیسماعیل هەورامی</div>
+    <div class="leftcol author"><small>نووسین و ئامادەکردنی</small>ئیسماعیل هەورامی</div>
   </div>
 </section>
 
